@@ -101,22 +101,21 @@
 
     <h1>Welcome to My Website</h1>
 
-    <form id="uploadForm" enctype="multipart/form-data">
+    <form id="uploadForm" method="post"  enctype="multipart/form-data">
         <label>Upload Images</label>
-        <input type="file" name="images" multiple accept="image/*">
+        <input type="file" name="images"  >
         <label>Image Name</label>
         <input type="text" name="imgname" placeholder="Enter image name">
         <input type="submit" value="Upload">
     </form>
-
     <button><a href="/viewimges" target="_blank">View Images</a></button>
-
     <script>
         document.getElementById("uploadForm").addEventListener("submit", function(event) {
             event.preventDefault(); // Page reload होने से रोकेगा
 
             const formData = new FormData(this);
-
+         console.log(formData);
+         
             fetch('http://localhost:8000/multipath', {
                 method: 'POST',
                 body: formData
